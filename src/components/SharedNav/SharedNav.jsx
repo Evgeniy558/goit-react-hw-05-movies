@@ -1,8 +1,8 @@
 import { Outlet, NavLink } from "react-router-dom";
 import css from "./SharedNav.module.css";
 import styled from "styled-components";
-import { Suspense } from "react";
-
+import { Suspense, lazy } from "react";
+const Home = lazy(() => import("../../pages/Home/Home"));
 const SharedNav = () => {
   const StyleLink = styled(NavLink)`
     color: black;
@@ -32,6 +32,7 @@ const SharedNav = () => {
       <Suspense fallback={<div>Loading...</div>}>
         {" "}
         <Outlet />
+        <Home />
       </Suspense>
     </>
   );
