@@ -26,10 +26,16 @@ function App() {
   return (
     <Routes>
       {" "}
-      <Route path="/" element={<SharedNav />}>
+      <Route path="goit-react-hw-05-movies/" element={<SharedNav />}>
         <Route index element={<Home />} />
-        <Route path="/movies" element={<MoviesPage />}></Route>
-        <Route path="/movies/:movieId" element={<MoviesDetails />}>
+        <Route
+          path="goit-react-hw-05-movies/movies"
+          element={<MoviesPage />}
+        ></Route>
+        <Route
+          path="goit-react-hw-05-movies/movies/:movieId"
+          element={<MoviesDetails />}
+        >
           <Route path="cast" element={<Cast />}></Route>
           <Route path="reviews" element={<Reviews />}></Route>{" "}
         </Route>
