@@ -3,7 +3,7 @@ import { getMoviesAndGenres } from "./getMoviesAndGenres";
 // import { getMoviesAndGenres } from "./getMoviesByTranding";
 import { updateFilmsArray } from "./updateFilmsArray";
 
-export async function renderHomePage(GENRE_LIST_URL, urlFilms) {
+export async function getAndUpdateDataForHomePage(GENRE_LIST_URL, urlFilms) {
   //1. get array of films and genres
 
   const arrayOfFilmAndGenres = await getMoviesAndGenres(
