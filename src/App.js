@@ -1,26 +1,26 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy } from "react";
 import "./App.css";
-// import { Home } from "./pages/Home/Home";
+import Home from "./pages/Home/Home";
 import SharedNav from "./components/SharedNav/SharedNav";
-// import { NotFound } from "./components/NotFound/NotFound";
-// import { MoviesDetails } from "./pages/Movies/components/MoviesDetails";
-// import { Cast } from "./pages/Movies/components/MoviesDetails/components/Cast";
-// import { Reviews } from "./pages/Movies/components/MoviesDetails/components/Reviews";
-// import { MoviesPage } from "./pages/Movies/MoviesPage";
+import NotFound from "./components/NotFound/NotFound";
+import MoviesDetails from "./pages/Movies/components/MoviesDetails/MoviesDetails";
+import Cast from "./pages/Movies/components/MoviesDetails/components/Cast/Cast";
+import Reviews from "./pages/Movies/components/MoviesDetails/components/Reviews/Reviews";
+import MoviesPage from "./pages/Movies/MoviesPage";
 
-const Home = lazy(() => import("./pages/Home/Home"));
-const MoviesPage = lazy(() => import("./pages/Movies/MoviesPage"));
-const MoviesDetails = lazy(() =>
-  import("./pages/Movies/components/MoviesDetails/MoviesDetails")
-);
-const Cast = lazy(() =>
-  import("./pages/Movies/components/MoviesDetails/components/Cast/Cast")
-);
-const Reviews = lazy(() =>
-  import("./pages/Movies/components/MoviesDetails/components/Reviews/Reviews")
-);
-const NotFound = lazy(() => import("./components/NotFound/NotFound"));
+// const Home = lazy(() => import("./pages/Home/Home"));
+// const MoviesPage = lazy(() => import("./pages/Movies/MoviesPage"));
+// const MoviesDetails = lazy(() =>
+//   import("./pages/Movies/components/MoviesDetails/MoviesDetails")
+// );
+// const Cast = lazy(() =>
+//   import("./pages/Movies/components/MoviesDetails/components/Cast/Cast")
+// );
+// const Reviews = lazy(() =>
+//   import("./pages/Movies/components/MoviesDetails/components/Reviews/Reviews")
+// );
+// const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
 function App() {
   return (

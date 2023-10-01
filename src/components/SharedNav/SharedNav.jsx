@@ -28,11 +28,8 @@ const SharedNav = () => {
             </StyleLink>
           </nav>
         </StyledFrame>
-      </header>
-      <Suspense fallback={<div>Loading...</div>}>
-        {" "}
-        <Outlet />
-      </Suspense>
+      </header>{" "}
+      <Outlet />
     </>
   );
 };
