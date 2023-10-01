@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { lazy } from "react";
 import "./App.css";
 // import { Home } from "./pages/Home/Home";
@@ -24,20 +24,18 @@ const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {" "}
-        <Route path="/" element={<SharedNav />}>
-          <Route index element={<Home />} />
-          <Route path="/movies" element={<MoviesPage />}></Route>
-          <Route path="/movies/:movieId" element={<MoviesDetails />}>
-            <Route path="cast" element={<Cast />}></Route>
-            <Route path="reviews" element={<Reviews />}></Route>{" "}
-          </Route>
-          <Route path="*" element={<NotFound />} />
+    <Routes>
+      {" "}
+      <Route path="/" element={<SharedNav />}>
+        <Route index element={<Home />} />
+        <Route path="/movies" element={<MoviesPage />}></Route>
+        <Route path="/movies/:movieId" element={<MoviesDetails />}>
+          <Route path="cast" element={<Cast />}></Route>
+          <Route path="reviews" element={<Reviews />}></Route>{" "}
         </Route>
-      </Routes>
-    </BrowserRouter>
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
 
