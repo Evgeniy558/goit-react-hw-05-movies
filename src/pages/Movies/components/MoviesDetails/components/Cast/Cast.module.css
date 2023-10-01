@@ -1,0 +1,12 @@
+.container_cast {
+  max-width: 100vh;
+  display: flex;
+  gap: 10px;
+}
+
+.actorImg {
+  max-width: 100px;
+}
+.actor_card {
+  list-style: none;
+}

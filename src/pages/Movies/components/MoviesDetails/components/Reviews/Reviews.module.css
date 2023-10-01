@@ -1,0 +1,11 @@
+.container_review {
+  padding: 10px;
+}
+.review_item {
+  margin: 10px;
+  list-style: none;
+}
+.author {
+  font-size: 16px;
+  font-weight: 700;
+}

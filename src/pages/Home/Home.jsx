@@ -4,7 +4,7 @@ import { getAndUpdateDataForHomePage } from "../../serveces/renderingIndex";
 import { GENRE_LIST_URL, TRENDING_URL } from "../../serveces/config";
 import { Link } from "react-router-dom";
 
-export const Home = () => {
+const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export const Home = () => {
       <h1>Trending Today</h1>
       <ul>
         {" "}
-        {trendingMovies.length !== 0 &&
+        {trendingMovies.length > 0 ? (
           trendingMovies.map((el) => {
             return (
               <li key={el.id}>
@@ -34,8 +34,12 @@ export const Home = () => {
                 </Link>
               </li>
             );
-          })}
+          })
+        ) : (
+          <div>Loading...</div>
+        )}
       </ul>
     </>
   );
 };
+export default Home;

@@ -1,3 +1,12 @@
 .container {
   display: flex;
 }
+.containerinfo {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px grey solid;
+  border-bottom: 1px grey solid;
+}
+.link {
+  display: inline-block;
+}
