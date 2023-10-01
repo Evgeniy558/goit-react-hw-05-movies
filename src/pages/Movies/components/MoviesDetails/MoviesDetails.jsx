@@ -40,7 +40,7 @@ const MoviesDetails = () => {
           <div className={css.container}>
             <div className={css.movieImg}>
               {" "}
-              <img src={`${API_IMG_URL}${backdrop_path}`}></img>
+              <img src={`${API_IMG_URL}${backdrop_path}`} alt=""></img>
             </div>
             <div className={css.movieInformation}>
               <h2>
