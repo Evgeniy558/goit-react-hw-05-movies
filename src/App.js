@@ -26,7 +26,7 @@ function App() {
   return (
     <Routes>
       {" "}
-      <Route path="goit-react-hw-05-movies/" element={<SharedNav />}>
+      <Route path="goit-react-hw-05-movies" element={<SharedNav />}>
         <Route index element={<Home />} />
         <Route
           path="goit-react-hw-05-movies/movies"
