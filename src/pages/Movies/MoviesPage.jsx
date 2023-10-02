@@ -14,20 +14,16 @@ const MoviesPage = () => {
   const SEARCH_QUERY_MOVIES_URL = `${API_URL}/3/search/movie?query=${movieName}&include_adult=false&language=en-US&page=1`;
 
   //if query value movieName in URL string will be changed would be update the list of movies
-  useEffect(
-    () => {
-      async function getQueryMoviesFromApi() {
-        const response = await getJsonData(SEARCH_QUERY_MOVIES_URL);
-        setQueryMovies(response.results);
-        setIsLoaded(true);
+  useEffect(() => {
+    async function getQueryMoviesFromApi() {
+      const response = await getJsonData(SEARCH_QUERY_MOVIES_URL);
+      setQueryMovies(response.results);
+      setIsLoaded(true);
+      console.log("reviews", response.results);
+    }
 
-        console.log("reviews", response.results);
-      }
-      getQueryMoviesFromApi();
-    },
-    [movieName],
-    SEARCH_QUERY_MOVIES_URL
-  );
+    getQueryMoviesFromApi();
+  }, [movieName, SEARCH_QUERY_MOVIES_URL]);
 
   //set value from form to URL string
   const setQueryString = (ev) => {

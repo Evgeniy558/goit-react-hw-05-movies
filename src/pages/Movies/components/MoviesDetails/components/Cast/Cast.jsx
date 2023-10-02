@@ -24,7 +24,7 @@ const Cast = () => {
       console.log("credits", response.cast);
     }
     getMovieCreditsFromApi(SEARCH_MOVIES_CREDITS_URL);
-  }, []);
+  }, [SEARCH_MOVIES_CREDITS_URL]);
 
   return (
     <div className={css.container_cast}>
@@ -34,6 +34,7 @@ const Cast = () => {
             return (
               <li key={el.id} className={css.actor_card}>
                 <img
+                  alt=""
                   src={
                     el.profile_path
                       ? `${API_IMG_URL}${el.profile_path}`

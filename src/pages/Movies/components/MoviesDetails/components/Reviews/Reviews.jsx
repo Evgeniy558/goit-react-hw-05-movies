@@ -19,7 +19,7 @@ const Reviews = () => {
       console.log("reviews", response.results);
     }
     getMovieReviewsFromApi(SEARCH_MOVIES_REVIEWES_URL);
-  }, []);
+  }, [SEARCH_MOVIES_REVIEWES_URL]);
   return (
     <div>
       <div className={css.container_review}>

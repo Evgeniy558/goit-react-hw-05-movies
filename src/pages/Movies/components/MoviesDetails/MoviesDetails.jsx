@@ -21,7 +21,7 @@ const MoviesDetails = () => {
       console.log("details", response);
     }
     getMovieDetailsFromApi(SEARCH_MOVIES_URL);
-  }, []);
+  }, [SEARCH_MOVIES_URL]);
 
   const { genres, backdrop_path, vote_average, overview } = movieDetails;
 
