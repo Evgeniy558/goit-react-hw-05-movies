@@ -29,7 +29,10 @@ const SharedNav = () => {
           </nav>
         </StyledFrame>
       </header>{" "}
-      <Outlet />
+      <Suspense>
+        {" "}
+        <Outlet />
+      </Suspense>
     </>
   );
 };
