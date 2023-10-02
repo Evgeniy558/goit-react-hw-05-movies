@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import { Outlet, useNavigate, useParams } from "react-router-dom";
+import { Outlet, useParams, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { API_URL, API_IMG_URL, getJsonData } from "../../../../serveces/config";
+import { API_URL, API_IMG_URL, getJsonData } from "../../services/config";
 import css from "./MoviesDetails.module.css";
 
 const MoviesDetails = () => {
   const [movieDetails, setMovieDetails] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const { movieId } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const location = useLocation();
+
   const SEARCH_MOVIES_URL = `${API_URL}/3/movie/${movieId}?language=en`;
 
   useEffect(() => {
@@ -29,14 +31,7 @@ const MoviesDetails = () => {
     <div>
       {isLoaded ? (
         <div>
-          <button
-            type="button"
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            Go Back
-          </button>{" "}
+          <Link to={location.state?.from ?? "/movie"}>Go back</Link>
           <div className={css.container}>
             <div className={css.movieImg}>
               {" "}

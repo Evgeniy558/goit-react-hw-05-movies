@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import css from "./Movies.module.css";
-import { API_URL, getJsonData } from "../../serveces/config";
+import { API_URL, getJsonData } from "../../services/config";
 
 const MoviesPage = () => {
   // const [queryMovies, setQueryMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoaded, setIsLoaded] = useState(false);
   const [queryMovise, setQueryMovies] = useState([]);
+  const location = useLocation();
 
   const movieName = searchParams.get("query") ?? "";
   const SEARCH_QUERY_MOVIES_URL = `${API_URL}/3/search/movie?query=${movieName}&include_adult=false&language=en-US&page=1`;
@@ -48,7 +49,11 @@ const MoviesPage = () => {
           queryMovise.map((el) => {
             return (
               <li key={el.id}>
-                <Link to={`/movies/${el.id}`} className={css.moveLink}>
+                <Link
+                  to={`/movies/${el.id}`}
+                  className={css.moveLink}
+                  state={{ from: location }}
+                >
                   {el.name ? el.name : el.original_title}
                 </Link>
               </li>

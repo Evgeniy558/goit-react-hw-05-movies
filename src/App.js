@@ -11,14 +11,10 @@ import SharedNav from "./components/SharedNav/SharedNav";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const MoviesPage = lazy(() => import("./pages/Movies/MoviesPage"));
-const MoviesDetails = lazy(() =>
-  import("./pages/Movies/components/MoviesDetails/MoviesDetails")
-);
-const Cast = lazy(() =>
-  import("./pages/Movies/components/MoviesDetails/components/Cast/Cast")
-);
+const MoviesDetails = lazy(() => import("./pages/MovieDetails/MoviesDetails"));
+const Cast = lazy(() => import("./pages/MovieDetails/components/Cast/Cast"));
 const Reviews = lazy(() =>
-  import("./pages/Movies/components/MoviesDetails/components/Reviews/Reviews")
+  import("./pages/MovieDetails/components/Reviews/Reviews")
 );
 const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 

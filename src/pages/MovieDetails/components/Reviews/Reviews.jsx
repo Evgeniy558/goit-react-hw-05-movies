@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { API_URL, getJsonData } from "../../../../../../serveces/config";
+import { API_URL, getJsonData } from "../../../../services/config";
 import css from "./Reviews.module.css";
 
 const Reviews = () => {

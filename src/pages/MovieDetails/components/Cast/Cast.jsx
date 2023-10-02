@@ -1,9 +1,5 @@
 import { useParams } from "react-router-dom";
-import {
-  API_URL,
-  API_IMG_URL,
-  getJsonData,
-} from "../../../../../../serveces/config";
+import { API_URL, API_IMG_URL, getJsonData } from "../../../../services/config";
 import { useEffect, useState } from "react";
 import css from "./Cast.module.css";
 
