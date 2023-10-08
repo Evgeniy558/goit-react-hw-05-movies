@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import css from "./Home.module.css";
-import { getAndUpdateDataForHomePage } from "../../services/renderingIndex";
-import { GENRE_LIST_URL, TRENDING_URL } from "../../services/config";
+import { getMovies } from "../../services/getMovies";
+import { TRENDING_URL } from "../../services/config";
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
     async function renderHomePage() {
-      const newState = await getAndUpdateDataForHomePage(
-        GENRE_LIST_URL,
-        TRENDING_URL
-      );
+      const newState = await getMovies(TRENDING_URL);
       setTrendingMovies((prevState) => {
         return [...prevState, ...newState];
       });

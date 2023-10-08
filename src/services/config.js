@@ -17,14 +17,7 @@ export const API_IMG_URL = "https://image.tmdb.org/t/p/w500";
 //url for getting movies by default
 export const TRENDING_URL = `${API_URL}/3/trending/all/${TIME_WINDOW}?language=${LANGUAGE}`;
 
-//url for getting list of genres for movies
-export const GENRE_LIST_URL = `${API_URL}/3/genre/movie/list?language=en`;
-
-// const url = `https://api.themoviedb.org/3/search/movie?${searchParams}`;
-
-// console.log(url); // Вывод: "https://api.themoviedb.org/3/search/movie?query=dom%20r&include_adult=false"
-
-// function for getting JSONdataw
+// function for getting JSONdata
 export async function getJsonData(url) {
   const response = await fetch(url, OPTIONS);
   return response.json();

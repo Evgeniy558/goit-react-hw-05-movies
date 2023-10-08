@@ -3,35 +3,35 @@ import { Outlet, useParams, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { API_URL, API_IMG_URL, getJsonData } from "../../services/config";
 import css from "./MoviesDetails.module.css";
+import { ButtonBack } from "../../components/ButtonBack/ButtonBack";
 
 const MoviesDetails = () => {
   const [movieDetails, setMovieDetails] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const { movieId } = useParams();
-  // const navigate = useNavigate();
   const location = useLocation();
 
   const SEARCH_MOVIES_URL = `${API_URL}/3/movie/${movieId}?language=en`;
 
   useEffect(() => {
-    async function getMovieDetailsFromApi(SEARCH_MOVIES_URL) {
-      const response = await getJsonData(SEARCH_MOVIES_URL);
+    setIsLoaded(false);
+    async function getMovieDetails(SEARCH_MOVIES_URL) {
+      const movieDetails = await getJsonData(SEARCH_MOVIES_URL);
       setMovieDetails((prevState) => {
-        return { ...prevState, ...response };
+        return { ...prevState, ...movieDetails };
       });
       setIsLoaded(true);
-      console.log("details", response);
     }
-    getMovieDetailsFromApi(SEARCH_MOVIES_URL);
+    getMovieDetails(SEARCH_MOVIES_URL);
   }, [SEARCH_MOVIES_URL]);
 
   const { genres, backdrop_path, vote_average, overview } = movieDetails;
-
+  console.log("location ", location);
   return (
     <div>
       {isLoaded ? (
         <div>
-          <Link to={location.state?.from ?? "/movie"}>Go back</Link>
+          <ButtonBack string={"movies"} />
           <div className={css.container}>
             <div className={css.movieImg}>
               {" "}

@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSearchParams, useLocation } from "react-router-dom";
 import css from "./Movies.module.css";
-import { API_URL, getJsonData } from "../../services/config";
+import { API_URL } from "../../services/config";
+import { getMovies } from "../../services/getMovies";
 
 const MoviesPage = () => {
   // const [queryMovies, setQueryMovies] = useState([]);
@@ -17,12 +18,10 @@ const MoviesPage = () => {
   //if query value movieName in URL string will be changed would be update the list of movies
   useEffect(() => {
     async function getQueryMoviesFromApi() {
-      const response = await getJsonData(SEARCH_QUERY_MOVIES_URL);
-      setQueryMovies(response.results);
+      const queryMovies = await getMovies(SEARCH_QUERY_MOVIES_URL);
+      setQueryMovies(queryMovies);
       setIsLoaded(true);
-      console.log("reviews", response.results);
     }
-
     getQueryMoviesFromApi();
   }, [movieName, SEARCH_QUERY_MOVIES_URL]);
 

@@ -10,15 +10,16 @@ const Reviews = () => {
   const SEARCH_MOVIES_REVIEWES_URL = `${API_URL}/3/movie/${movieId}/reviews?language=en`;
 
   useEffect(() => {
-    async function getMovieReviewsFromApi(SEARCH_MOVIES_CREDITS_URL) {
-      const response = await getJsonData(SEARCH_MOVIES_CREDITS_URL);
+    setIsLoaded(false);
+    async function getMovieReviews(SEARCH_MOVIES_CREDITS_URL) {
+      const moviesReviews = await getJsonData(SEARCH_MOVIES_CREDITS_URL);
       setMovieReviews((prevState) => {
-        return [...prevState, ...response.results];
+        return [...prevState, ...moviesReviews.results];
       });
       setIsLoaded(true);
-      console.log("reviews", response.results);
+      console.log("reviews", moviesReviews.results);
     }
-    getMovieReviewsFromApi(SEARCH_MOVIES_REVIEWES_URL);
+    getMovieReviews(SEARCH_MOVIES_REVIEWES_URL);
   }, [SEARCH_MOVIES_REVIEWES_URL]);
   return (
     <div>
