@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Outlet, useParams, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { API_URL, API_IMG_URL, getJsonData } from "../../services/config";
+import { API_IMG_URL } from "../../service/api";
 import css from "./MoviesDetails.module.css";
 import { ButtonBack } from "../../components/ButtonBack/ButtonBack";
+import { fetchMovieDetails } from "../../service/api";
 
 const MoviesDetails = () => {
   const [movieDetails, setMovieDetails] = useState({});
@@ -11,19 +12,17 @@ const MoviesDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
 
-  const SEARCH_MOVIES_URL = `${API_URL}/3/movie/${movieId}?language=en`;
-
   useEffect(() => {
     setIsLoaded(false);
-    async function getMovieDetails(SEARCH_MOVIES_URL) {
-      const movieDetails = await getJsonData(SEARCH_MOVIES_URL);
+    async function getMovieDetails(movieId) {
+      const movieDetails = await fetchMovieDetails(movieId);
       setMovieDetails((prevState) => {
         return { ...prevState, ...movieDetails };
       });
       setIsLoaded(true);
     }
-    getMovieDetails(SEARCH_MOVIES_URL);
-  }, [SEARCH_MOVIES_URL]);
+    getMovieDetails(movieId);
+  }, [movieId]);
 
   const { genres, backdrop_path, vote_average, overview } = movieDetails;
   console.log("location ", location);
@@ -31,7 +30,7 @@ const MoviesDetails = () => {
     <div>
       {isLoaded ? (
         <div>
-          <ButtonBack string={"movies"} />
+          <ButtonBack />
           <div className={css.container}>
             <div className={css.movieImg}>
               {" "}
@@ -57,10 +56,18 @@ const MoviesDetails = () => {
           </div>
           <div className={css.containerinfo}>
             <div>Aditional information</div>
-            <Link to="cast" className={css.link}>
+            <Link
+              to="cast"
+              className={css.link}
+              state={{ from: location.state?.from ?? "/" }}
+            >
               Cast
             </Link>
-            <Link to="reviews" className={css.link}>
+            <Link
+              to="reviews"
+              className={css.link}
+              state={{ from: location.state?.from ?? "/" }}
+            >
               Reviews
             </Link>
           </div>

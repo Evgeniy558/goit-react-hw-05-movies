@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSearchParams, useLocation } from "react-router-dom";
 import css from "./Movies.module.css";
-import { API_URL } from "../../services/config";
-import { getMovies } from "../../services/getMovies";
+import { getQueryMovies } from "../../service/api";
 
 const MoviesPage = () => {
   // const [queryMovies, setQueryMovies] = useState([]);
@@ -11,19 +10,17 @@ const MoviesPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [queryMovise, setQueryMovies] = useState([]);
   const location = useLocation();
-
   const movieName = searchParams.get("query") ?? "";
-  const SEARCH_QUERY_MOVIES_URL = `${API_URL}/3/search/movie?query=${movieName}&include_adult=false&language=en-US&page=1`;
 
   //if query value movieName in URL string will be changed would be update the list of movies
   useEffect(() => {
     async function getQueryMoviesFromApi() {
-      const queryMovies = await getMovies(SEARCH_QUERY_MOVIES_URL);
+      const queryMovies = await getQueryMovies(movieName);
       setQueryMovies(queryMovies);
       setIsLoaded(true);
     }
     getQueryMoviesFromApi();
-  }, [movieName, SEARCH_QUERY_MOVIES_URL]);
+  }, [movieName]);
 
   //set value from form to URL string
   const setQueryString = (ev) => {

@@ -1,27 +1,25 @@
 import { useParams } from "react-router-dom";
-import { API_URL, API_IMG_URL, getJsonData } from "../../../../services/config";
+import { API_IMG_URL } from "../../../../service/api";
 import { useEffect, useState } from "react";
 import css from "./Cast.module.css";
+import { fetchMovieCredits } from "../../../../service/api";
 
 const Cast = () => {
   const { movieId } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
   const [movieCredits, setmovieCredits] = useState([]);
 
-  const SEARCH_MOVIES_CREDITS_URL = `${API_URL}/3/movie/${movieId}/credits?language=en`;
-
   useEffect(() => {
     setIsLoaded(false);
-    async function getMovieCredits(SEARCH_MOVIES_CREDITS_URL) {
-      const movieCredits = await getJsonData(SEARCH_MOVIES_CREDITS_URL);
+    async function getMovieCredits(movieId) {
+      const movieDetails = await fetchMovieCredits(movieId);
       setmovieCredits((prevState) => {
-        return [...prevState, ...movieCredits.cast];
+        return [...prevState, ...movieDetails.cast];
       });
       setIsLoaded(true);
-      console.log("movieCredits", movieCredits);
     }
-    getMovieCredits(SEARCH_MOVIES_CREDITS_URL);
-  }, [SEARCH_MOVIES_CREDITS_URL]);
+    getMovieCredits(movieId);
+  }, [movieId]);
 
   return (
     <div className={css.container_cast}>

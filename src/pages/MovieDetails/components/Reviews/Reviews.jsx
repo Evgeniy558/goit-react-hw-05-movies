@@ -1,26 +1,26 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { API_URL, getJsonData } from "../../../../services/config";
 import css from "./Reviews.module.css";
+import { fetchMovieReviews } from "../../../../service/api";
 
 const Reviews = () => {
   const { movieId } = useParams();
   const [moviesReviews, setMovieReviews] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const SEARCH_MOVIES_REVIEWES_URL = `${API_URL}/3/movie/${movieId}/reviews?language=en`;
 
   useEffect(() => {
     setIsLoaded(false);
-    async function getMovieReviews(SEARCH_MOVIES_CREDITS_URL) {
-      const moviesReviews = await getJsonData(SEARCH_MOVIES_CREDITS_URL);
+    async function getMovieReviews(movieId) {
+      const moviesReviews = await fetchMovieReviews(movieId);
       setMovieReviews((prevState) => {
         return [...prevState, ...moviesReviews.results];
       });
       setIsLoaded(true);
       console.log("reviews", moviesReviews.results);
     }
-    getMovieReviews(SEARCH_MOVIES_REVIEWES_URL);
-  }, [SEARCH_MOVIES_REVIEWES_URL]);
+    getMovieReviews(movieId);
+  }, [movieId]);
+
   return (
     <div>
       <div className={css.container_review}>
